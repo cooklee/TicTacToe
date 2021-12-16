@@ -10,4 +10,5 @@ router.register(r'move', views.MoveViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('highscore/', views.HighScoreView.as_view())
 ]
