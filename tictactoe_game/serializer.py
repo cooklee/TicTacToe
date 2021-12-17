@@ -9,7 +9,7 @@ class GameSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Game
-        fields = ['id', 'board_size', 'line_length', 'players', 'current_player']
+        fields = ['id', 'board_size', 'line_length', 'players', 'current_player',]
 
 
 class MoveSerializer(serializers.ModelSerializer):

@@ -10,7 +10,7 @@ from tictactoe_game.serializer import GameSerializer, MoveSerializer, HighScoreS
 
 
 class GameViewSet(viewsets.ModelViewSet):
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
     queryset = Game.objects.all()
     serializer_class = GameSerializer
 
@@ -40,6 +40,11 @@ class GameViewSet(viewsets.ModelViewSet):
             return Response(d, status=status.HTTP_201_CREATED)
         return Response(move_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    @action(methods=['get'], detail=True)
+    def get_moves(self, request, pk):
+        serializer = MoveSerializer(Move.objects.filter(game_id=pk), many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 class HighScoreView(mixins.ListModelMixin, generics.GenericAPIView):
     queryset = get_user_model().objects.annotate(won=Count('won_games')).order_by('-won')
@@ -50,6 +55,6 @@ class HighScoreView(mixins.ListModelMixin, generics.GenericAPIView):
 
 
 class MoveViewSet(viewsets.ModelViewSet):
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
     queryset = Move.objects.all()
     serializer_class = MoveSerializer
