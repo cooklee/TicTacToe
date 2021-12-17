@@ -1,11 +1,9 @@
-from django.db.models import Count
-from django.shortcuts import render
 from django.contrib.auth import get_user_model
+from django.db.models import Count
 # Create your views here.
 from rest_framework import permissions, viewsets, status, generics, mixins
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.views import APIView
 
 from tictactoe_game.models import Game, Move
 from tictactoe_game.serializer import GameSerializer, MoveSerializer, HighScoreSerializer

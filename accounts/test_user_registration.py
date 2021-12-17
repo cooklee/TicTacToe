@@ -1,5 +1,4 @@
 import pytest
-
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
@@ -34,6 +33,7 @@ def test_user_authorization(client, user_with_password):
     response = client.post(reverse('login'), data=data)
     assert response.status_code == 200
     assert 'auth_token' in response.data
+
 
 @pytest.mark.django_db
 def test_user_fail_authorization(client, user_with_password):

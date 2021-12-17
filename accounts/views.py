@@ -7,10 +7,8 @@ from accounts.serializers import UserSerializer, RegisterSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
-
     queryset = get_user_model().objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
-
 
 
 class RegisterView(CreateAPIView):

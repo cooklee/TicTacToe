@@ -1,6 +1,6 @@
-from django.db.models import Count
-from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from rest_framework import serializers
+
 from tictactoe_game.models import Game, Move
 
 
@@ -51,6 +51,7 @@ class MoveSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(f"field {x},{y} already taken")
         except Move.DoesNotExist:
             return super().validate(attrs)
+
 
 class HighScoreSerializer(serializers.ModelSerializer):
     class Meta:

@@ -55,4 +55,3 @@ def user_with_password():
     u.set_password(password)
     u.save()
     return (u, password)
-

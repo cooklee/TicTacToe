@@ -3,6 +3,7 @@ from collections import namedtuple
 Point = namedtuple('Point', 'row col')
 
 
+# todo refactor it
 def check_if_win(board, point, line_lenght):
     checks = [calculate_vertical_line,
               calculate_horizontal_line,
@@ -89,7 +90,3 @@ def calculate_diagonal_line_right_down(board, point, line_lenght=5):
         else:
             break
     return False
-
-x = """
-{"auth_token":"b8312749be2f6bb2a0c84fba1205a7cc3d13bceb"}
-"""
